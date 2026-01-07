@@ -108,23 +108,6 @@ export default function App() {
         }
       `}</style>
 
-      {/* MASCOTE ESTÁTICO - Ajustado para mobile */}
-      <img
-        src="https://lh3.googleusercontent.com/d/1RkAka2EiOqauVsOtthdNG4tC-0gTsW5c"
-        alt="Mascote WB Importados"
-        style={{
-          position: 'absolute',
-          top: '55px', 
-          right: '12px',
-          width: 'clamp(80px, 15vw, 120px)',
-          height: 'auto',
-          zIndex: 200,
-          pointerEvents: 'none',
-          filter: 'drop-shadow(0 10px 20px rgba(0,0,0,0.3))'
-        }}
-        className="animate-float-mascot mascot-mask"
-      />
-
       {/* Letreiro Rotativo */}
       <div className="w-full bg-black py-2.5 overflow-hidden border-b border-orange-500/30 relative z-10">
         <div className="animate-marquee">
@@ -143,14 +126,14 @@ export default function App() {
         } shadow-2xl border-r border-orange-500/20`}
       >
         <div className="p-6 flex flex-col h-full">
-          <div className="flex justify-between items-center mb-12">
+          <div className="flex justify-between items-center mb-10">
             <h2 className="text-2xl font-black italic text-orange-500 uppercase">WB MENU</h2>
             <button onClick={() => setIsSidebarOpen(false)} className="p-3 bg-white/10 rounded-full text-white active:scale-90 transition-transform">
               <X size={24} />
             </button>
           </div>
           
-          <nav className="space-y-4 flex-1">
+          <nav className="space-y-4 flex-1 flex flex-col">
             <a href="https://wa.me/5511960817540" target="_blank" rel="noreferrer" className="flex items-center gap-4 p-5 bg-gray-900 rounded-2xl border border-gray-800 active:scale-95 transition-transform">
               <div className="p-2.5 bg-green-600 rounded-xl"><MessageCircle size={22} color="white" /></div>
               <span className="font-bold">WhatsApp Vendas</span>
@@ -159,7 +142,23 @@ export default function App() {
               <div className="p-2.5 bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-600 rounded-xl"><Instagram size={22} color="white" /></div>
               <span className="font-bold">Instagram Oficial</span>
             </a>
+
+            {/* MASCOTE MOVIDO PARA O MENU */}
+            <div className="mt-auto pt-10 flex justify-center overflow-hidden">
+              <img
+                src="https://lh3.googleusercontent.com/d/1RkAka2EiOqauVsOtthdNG4tC-0gTsW5c"
+                alt="Mascote WB Importados"
+                className="w-full h-auto max-w-[200px] animate-float-mascot mascot-mask opacity-90"
+                style={{
+                  filter: 'drop-shadow(0 15px 30px rgba(249, 115, 22, 0.2))'
+                }}
+              />
+            </div>
           </nav>
+
+          <div className="mt-6 pt-6 border-t border-gray-800 text-center">
+            <p className="text-[10px] text-gray-500 font-black uppercase tracking-widest">WBimportadoss &copy; 2022</p>
+          </div>
         </div>
       </div>
 
@@ -198,7 +197,7 @@ export default function App() {
         </div>
       </header>
 
-      {/* Category Tabs - Mobile Scrollable */}
+      {/* Category Tabs */}
       {!searchQuery && (
         <section className="sticky top-0 z-40 bg-orange-500/90 backdrop-blur-md border-b border-orange-400/30 overflow-x-auto no-scrollbar scroll-smooth snap-x">
           <div className="flex gap-3 px-5 py-4 min-w-max justify-center md:mx-auto">
@@ -264,7 +263,7 @@ export default function App() {
         </div>
       </main>
 
-      {/* Modal - Otimizado Mobile */}
+      {/* Modal Detalhes */}
       {selectedProduct && (
         <div className="fixed inset-0 z-[300] flex items-end md:items-center justify-center overflow-hidden">
           <div className="absolute inset-0 bg-black/90 backdrop-blur-md" onClick={closeModal} />
@@ -277,7 +276,6 @@ export default function App() {
               <X size={24} strokeWidth={3} />
             </button>
 
-            {/* Imagem Mobile */}
             <div className="w-full md:w-1/2 h-[35vh] md:h-auto bg-gray-100 relative">
               <SafeImage src={selectedProduct.images.front} className="w-full h-full object-cover" alt="Produto" />
               <div className="absolute bottom-4 left-4 bg-black/80 text-white text-[8px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest border border-white/10">
@@ -285,7 +283,6 @@ export default function App() {
               </div>
             </div>
 
-            {/* Conteúdo Mobile */}
             <div className="w-full md:w-1/2 p-6 md:p-12 overflow-y-auto custom-scrollbar flex flex-col bg-white">
               <span className="bg-orange-600 text-white text-[9px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest self-start mb-4">
                 {selectedProduct.category}
@@ -310,7 +307,6 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Transaction Box - Mobile Priority */}
               <div className="mt-auto bg-gray-50 p-6 md:p-10 rounded-[2.5rem] border-2 border-white shadow-inner">
                 <div className="mb-6">
                   <p className="text-sm text-gray-400 line-through font-black uppercase mb-1 opacity-70">
@@ -350,7 +346,7 @@ export default function App() {
         </div>
       )}
 
-      {/* Floating Action CTA - Safe Area support */}
+      {/* Floating Action CTA */}
       <a 
         href="https://wa.me/5511960817540"
         target="_blank"
@@ -360,7 +356,7 @@ export default function App() {
         <MessageCircle size={32} md:size={40} strokeWidth={3} />
       </a>
 
-      {/* Footer Simples */}
+      {/* Footer */}
       <footer className="bg-black text-white py-16 px-6 text-center border-t-8 border-orange-600">
         <h2 className="text-4xl font-black italic mb-4 tracking-tighter opacity-20 uppercase">WBimportadoss</h2>
         <p className="text-[9px] text-gray-600 uppercase tracking-widest font-black">
